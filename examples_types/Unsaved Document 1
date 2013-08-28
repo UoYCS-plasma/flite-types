@@ -1,0 +1,28 @@
+bash-4.1$ ./fl -r6:4:2:1:0 examples/Mult.hs
+("main",0,[],[FUN True 2 9,INT 4,INT 5],[])
+
+1("divMod",0,[7],[FUN False 0 15],[APP False [ARG True 1,PRI 2 "(+)"],APP False [ARG True 1,VAR False 0]])
+("divMod#1",2,[],[CON 2 0,INT 0,ARG False 0],[])
+("divMod#2",0,[],[FUN False 0 16],[APP False [ARG False 0,PRI 2 "(-)"],APP False [ARG False 1,VAR False 0]])
+("divMod#3",0,[],[FUN False 0 17],[APP False [ARG True 0,PRI 2 "(+)"],APP False [ARG True 0,VAR False 0]])
+("divMod#4",0,[],[FUN False 0 18],[APP False [ARG True 0,PRI 2 "(+)"],APP False [PRI 2 "(+)",INT 1]])
+("divMod#5",3,[4],[ARG True 1,VAR False 0,ARG False 0,ARG True 1,ARG True 2],[APP False [ARG True 2,PRI 2 "(<=)"]])
+("divMod#6",3,[2],[ARG True 1,VAR False 0,ARG True 1,ARG True 0],[APP False [ARG True 0,PRI 2 "(<=)"]])
+8("divMod#7",3,[6],[FUN True 2 1,ARG False 1,ARG False 2,ARG False 0],[])
+
+9("mul",2,[13],[ARG True 1,PRI 2 "(==)",INT 1,ARG True 1,ARG False 0],[])
+("mul#1",1,[],[ARG False 0],[])
+("mul#2",1,[],[INT 0],[])
+("mul#3",0,[10],[FUN False 0 20],[APP False [ARG True 2,PRI 2 "(+)"],APP False [ARG True 2,VAR False 0]])
+("mul#4",2,[12],[FUN True 2 1,ARG False 0,INT 2,ARG False 1],[])
+("mul#5",2,[],[ARG False 1],[])
+("divMod",2,[],[ARG True 0,VAR False 0,ARG True 1,ARG True 0,VAR True (-1)],[APP False [VAR True (-1),PRI 2 "(<=)"]])
+("divMod#2",2,[],[CON 2 0,INT 1,VAR False (-1)],[])
+("divMod#3",3,[],[CON 2 0,VAR False (-1),ARG False 1],[])
+("divMod#4",0,[],[FUN False 0 19],[APP False [ARG True 0,VAR False (-2),VAR False (-1)],APP False [ARG False 1,PRI 2 "(-)"]])
+("divMod#4",3,[],[CON 2 0,VAR False (-2),VAR False 0],[APP False [ARG False 2,VAR False (-1)]])
+20("mul#3",3,[],[ARG False 1,PRI 2 "(==)",INT 0,ARG True 2,VAR False 0],[APP False [FUN True 2 9,VAR False (-1),ARG False 0,PRI 2 "(+)"]])
+
+21 parts
+
+

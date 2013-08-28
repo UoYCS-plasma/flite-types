@@ -1,0 +1,80 @@
+even n = case (==) n 0 of {
+          True  -> True;
+          False -> odd ((-) n 1);
+          };
+
+odd n = case (==) n 0 of {
+          True  -> False;
+          False -> even ((-) n 1);
+          };
+
+evenodd''::Prog
+evenodd''= [(0,[FUN 1 1,INT 10],[]),
+          (1,[INT 0,PTR 0,TAB 2 2 1,ARG 0],[[ARG 0,PRI "(==)"]]),
+          (2,[FUN 1 4,PTR 1],[[ARG 1,PRI "(-)"],[INT 1,PTR 0]]),
+          (2,[CON 0 1],[]),
+          (1,[INT 0,PTR 0,TAB 5 2 1,ARG 0],[[ARG 0,PRI "(==)"]]),
+          (2,[FUN 1 1,PTR 1],[[ARG 1,PRI "(-)"],[INT 1,PTR 0]]),
+          (2,[CON 0 0],[])]
+
+P_Groups
+[
+ [("f3",(2,[CON 0 1],[]))],
+ [("f6",(2,[CON 0 0],[]))],
+ [("f2",(2,[FUN 1 4,PTR 1],[[ARG 1,PRI "(-)"],[INT 1,PTR 0]])),
+  ("f4",(1,[INT 0,PTR 0,TAB 5 2 1,ARG 0],[[ARG 0,PRI "(==)"]])),
+  ("f5",(2,[FUN 1 1,PTR 1],[[ARG 1,PRI "(-)"],[INT 1,PTR 0]])),
+  ("f1",(1,[INT 0,PTR 0,TAB 2 2 1,ARG 0],[[ARG 0,PRI "(==)"]]))],
+ [("f0",(0,[FUN 1 1,INT 10],[]))]
+]
+
+P_I=
+[("f3",(2,[CON 0 1],[])),
+ ("f6",(2,[CON 0 0],[])),
+ ("f2",(2,[FUN 1 4,PTR 1],[[ARG 1,PRI "(-)"],[INT 1,PTR 0]])),
+ ("f4",(1,[INT 0,PTR 0,TAB 5 2 1,ARG 0],[[ARG 0,PRI "(==)"]])),
+ ("f5",(2,[FUN 1 1,PTR 1],[[ARG 1,PRI "(-)"],[INT 1,PTR 0]])),
+ ("f1",(1,[INT 0,PTR 0,TAB 2 2 1,ARG 0],[[ARG 0,PRI "(==)"]])),
+ ("f0",(0,[FUN 1 1,INT 10],[]))]
+
+--envinitial
+[("f3",SCHEME [] (a -> b -> c,[])),
+ ("f6",SCHEME [] (a -> b -> c,[])),
+ ("f2",SCHEME [] (a -> b -> c,[])),
+ ("f4",SCHEME [] (a -> b,[])),
+ ("f5",SCHEME [] (a -> b -> c,[])),
+ ("f1",SCHEME [] (a -> b,[])),
+ ("f0",SCHEME [] (a,[]))]
+
+--Only interested in groups where length>1
+
+*MutatorTest> callGroupsRec $ getBinding evenodd''
+[["f2","f4","f5","f1"]]
+
+--List of templates that are alternatives
+*MutatorTest> getInfoCT evenodd''
+[("f2",1),("f3",1),("f5",1),("f6",1)]
+
+
+
+
+
+
+
+
+*MutatorTest> infer evenodd''
+f0 : {1↦ {} -> a} -> a
+
+f1 : (prim 2 Int -> prim 1 Int) -> {1↦ {} -> a} -> a
+
+f5 : {} -> (prim 2 Int -> prim 1 Int) -> a
+
+f4 : (prim 2 B -> prim 1 B) -> {0↦ {} -> b} -> b
+
+f2 : {} -> (prim 2 Int -> prim 1 Int) -> a
+
+f6 : {} -> a -> {0↦ {} -> b} -> b
+
+f3 : {} -> a -> {1↦ {} -> b} -> b
+
+----------------------------
