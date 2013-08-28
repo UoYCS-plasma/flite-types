@@ -1,12 +1,37 @@
 ================================
 F-lite: a core subset of Haskell
 Matthew N, 26 November 2008
+Marco Perez, 4 June 2013
 ================================
 
 F-lite is a core subset of Haskell.  Unlike GHC Core and Yhc Core,
 F-lite has a concrete syntax.  You can write F-lite programs in a
 file, and pass them to the F-lite interpreter or compiler.  Another
 way to view F-lite is as a minimalist lazy functional language.
+
+This version of F-lite has the option of having type declarations and
+type-checking. This functionality was contributed by Marco Perez as
+he carried out his PhD research. 
+
+Running F-lite with the type-checker
+------------------------------------
+
+compile the f-lite executable and use the '-t' option
+(-t option means "types")
+
+    fl -t examples_types/Queens.hs
+
+All the examples with the data type definitions are in dir "examples_types".
+It gives you back the infered types and the type definitions. I'm not using type synonyms, only data type definitions.
+
+If you want to alter the code.
+The files involved are:
+TypeChecker2.hs, Syntax.hs, Pretty.hs, Flite.hs, and the parser.
+
+
+Below is the old documentation from the previous versions of f-lite. 
+All of it applies unless you are using the -t option when runing
+f-lite.
 
 F-lite is untyped
 -----------------
