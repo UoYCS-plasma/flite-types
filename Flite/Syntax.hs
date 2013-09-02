@@ -43,7 +43,7 @@ type App = [Exp]
 type Tvname = [Int]
 data Type_exp = TVAR Tvname
               | TCONS [Char] [Type_exp]
-              deriving (Eq)
+              deriving (Eq, Show)
 
 data TypeExp =   TEVar String
                 |TECons String [TypeExp]
